@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
+import Section from "./components/Section";
 import "./App.css";
 
 function App() {
   const [genres, setGenres] = useState(null);
 
-  console.log(genres);
   const fetchData = async () => {
     const response = await fetch("/.netlify/functions/getGenres");
     const responseBody = await response.json();
@@ -14,10 +14,14 @@ function App() {
   useEffect(() => {
     fetchData();
   }, []);
+
   return (
-    <div className="App">
-      <h1>Hello</h1>
-    </div>
+    <>
+      {genres &&
+        genres.map((genre) => (
+          <Section key={genre.value} genre={genre.value} />
+        ))}
+    </>
   );
 }
 
