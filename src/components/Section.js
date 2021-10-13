@@ -23,7 +23,7 @@ function Section({ genre }) {
 
   return (
     <>
-      <div>{genre}</div>
+      <h2 id={genre}>{genre}</h2>
       {movies && (
         <div className="movie-section">
           {movies.map((movie, index) => (
@@ -35,7 +35,9 @@ function Section({ genre }) {
               setPageState(pageState);
               fetchData();
             }}
-          ></div>
+          >
+            <i className="fas fa-angle-right"></i>
+          </div>
         </div>
       )}
     </>

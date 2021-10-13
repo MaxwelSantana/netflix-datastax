@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import Section from "./components/Section";
+import NavBar from "./components/NavBar";
+import HeroSection from "./components/HeroSection";
 import "./App.css";
 
 function App() {
@@ -22,10 +24,15 @@ function App() {
 
   return (
     <>
-      {genres &&
-        genres.map((genre) => (
-          <Section key={genre.value} genre={genre.value} />
-        ))}
+      <NavBar />
+      <HeroSection />
+      {genres && (
+        <div className="container">
+          {genres.map((genre) => (
+            <Section key={genre.value} genre={genre.value} />
+          ))}
+        </div>
+      )}
       <div
         className="page-end"
         onMouseEnter={() => {
